@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>helloworld</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-html & v-text</h1>
+    <hr>
+    <div id="app">
+        <span>{{msg}}</span>==<span v-text="msg"></span><br/>
+        <!-- <span>{{dodo}}</span> -->
+        <span v-html="dodo"></span>
+    </div>
+
+    <script>
+     var app = new Vue({
+         el:'#app',
+         data:{
+           msg:'v-text啦啦啦啦啦',
+           dodo:'<h1>拉拉阿拉啦</h1>'
+         }
+     });
+    </script>
+</body>
+</html>

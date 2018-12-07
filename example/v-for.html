@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>helloworld</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for 实例</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for="item in Sortitems">
+                {{item}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(todo,index) in Sorttodos">
+               {{index}}. {{todo.name}}---{{todo.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+     var app = new Vue({
+         el:'#app',
+         data:{
+            items:[54,35,12,99,78,3],
+            todos:[
+                {name:'rainbow',age:25},
+                {name:'rainbow1',age:24},
+                {name:'rainbow2',age:23},
+                {name:'rainbow3',age:22},
+
+            ]
+         },
+         computed:{
+             Sortitems: function(){
+                 return this.items.sort(sortnumber)
+             },
+             Sorttodos: function(){
+                 return  sortByKey(this.todos,'age')
+             }
+         }
+     });
+     function sortnumber(a,b){
+         return a-b
+     }
+     function sortByKey(array,key){
+        return array.sort(function(a,b){
+        var x=a[key];
+        var y=b[key];
+        return ((x<y)?-1:((x>y)?1:0));
+   });
+}
+    </script>
+</body>
+</html>
