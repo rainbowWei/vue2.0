@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue.directive 自定义指令</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-rainbow = "color" >{{num}}</div>
+        <p><button @click= "add">add</button></p>
+    </div>
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>
+
+    <script>
+        
+        // Vue.directive("rainbow",function(el,bingding){
+        //     // console.log(el)
+        //     // console.log(bingding)
+        //     // console.log(bingding.name)
+        //     // console.log(bingding.value)
+        //     // console.log(bingding.expression)
+        //     el.style="color:"+bingding.value
+        // })   
+       function unbind(){
+           app.$destroy();
+        }
+        Vue.directive("rainbow",{
+            bind:function(){
+                console.log("1 - bind")
+            },
+            inserted:function(){
+                console.log("2 - inserted")
+            },
+            update:function(){
+                console.log("3 - update")
+            },
+            componentUpdated:function(){
+                console.log("4 - conponentUpdated")
+            },
+            unbind:function(){
+                console.log("5 - unbind")
+            }
+        })
+     var app = new Vue({
+         el:'#app',
+         data:{
+             num:20,
+             color:'pink'
+         },
+         methods:{
+             add:function(){
+                 this.num++
+             }
+
+         }
+     });
+    </script>
+</body>
+</html>
