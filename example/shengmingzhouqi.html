@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue的生命周期</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue的生命周期</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+        <p><button @click='add'>添加</button></p>
+    </div>
+    <p><button onclick="app.$destroy()">销毁</button></p>
+
+    <script>
+     var app = new Vue({
+         el:'#app',
+         data:{
+            count:1
+         },
+         methods:{
+             add:function(){
+                 this.count++
+             }
+         },
+         beforeCreate:function(){
+             console.log('1.beforCreate 创建初始化之前')
+         },
+        created:function(){
+             console.log('2.create 创建完成')
+         },
+         beforeMount:function(){
+             console.log('3.beforMounted 挂载之前')
+         },
+         mounted:function(){
+             console.log('4.mounted 挂载完成')
+         },
+         beforeUpdate:function(){
+             console.log('5.beforeUpdate 数据更新之前')
+         },
+         updated:function(){
+             console.log('6.update 更新完成')
+         },
+         beforeDestroy:function(){
+             console.log('7.beforeDestroy 销毁之前')
+         },
+         destroyed:function(){
+             console.log('8.destroy 销毁之后')
+         }
+     });
+    </script>
+</body>
+</html>

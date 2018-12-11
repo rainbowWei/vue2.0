@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component2</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component2</h1>
+    <hr>
+    <div id="app">
+        <dog v-bind:here="msg"></dog>
+    </div>
+
+    <script>
+     var app = new Vue({
+         el:'#app',
+         data:{
+             msg:"kkdlskd;s"
+         },
+         components:{
+             "dog":{
+                template:`<div style="color:red">dog from {{ here}}</div>`,
+                props:['here']
+             }
+         }
+     });
+    </script>
+</body>
+</html>

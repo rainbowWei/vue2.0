@@ -32,8 +32,9 @@
            app.$destroy();
         }
         Vue.directive("rainbow",{
-            bind:function(){
+            bind:function(el,bingding){
                 console.log("1 - bind")
+                el.style="color:"+bingding.value
             },
             inserted:function(){
                 console.log("2 - inserted")
