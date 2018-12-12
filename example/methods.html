@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>methods Option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods Option</h1>
+    <hr>
+    <div id="app">
+        {{msg}}
+        <p><button @click="add(3,$event)">添加</button></p>
+        <p><rainbow @click.native="add(2)"></rainbow></p>
+    </div>
+    <button onclick="app.add(5)">外部调用构造器里的方法</button>
+
+    <script>
+        var rainbow = {
+            template:`<button>组件添加</button>`
+        }
+     var app = new Vue({
+         el:'#app',
+         data:{
+             msg:1
+         },
+         components:{
+             "rainbow":rainbow
+         },
+         methods:{
+             add:function(num,bbb){
+                 console.log(bbb)
+                 if(num != ""){
+                     this.msg+=num
+                 }else{
+                     this.msg++
+                 }
+             }
+         }
+     });
+    </script>
+</body>
+</html>

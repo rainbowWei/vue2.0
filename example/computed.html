@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed Option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed Option</h1>
+    <hr>
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for="item in reverseNews">{{item.title}}-{{item.date}}</li>
+        </ul>
+        
+    </div>
+
+    <script>
+    var newsList = [
+        {title:"2008年10月，株洲新闻网全新改版，彰显“民生视角、文化品格", date:"2018/12/2"},
+        {title:"塑造 “亲和力·影响力·公信力”的网络媒体形象。新闻量、信息量、", date:"2018/12/12"},
+        {title:"10月9日网站全新改版，论坛同时开通。", date:"2018/12/12"},
+        {title:"新闻网举行第一次论坛版主见面会，共有16位版主参加", date:"2018/12/22"},
+    ]
+     var app = new Vue({
+         el:'#app',
+         data:{
+             price:100,
+             newsList:newsList
+         },
+         computed:{
+             newPrice:function(){
+                 return  this.price = '￥'+ this.price +'元'
+             },
+             reverseNews:function(){
+                 return this.newsList.reverse()
+             }
+         }
+     });
+    </script>
+</body>
+</html>

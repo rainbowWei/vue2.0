@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>watch选项</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>watch选项</h1>
+    <hr>
+    <div id="app">
+      <p>天气温度：{{wendu}}°</p>
+      <p>建议穿衣：{{jianyi}}</p>
+      <p><button @click="add(3)">升高温度</button><button @click="reduce(5)">降低温度</button></p>
+    </div>
+
+    <script>
+        var jianyiList = ["T恤","大衣","羽绒服"]
+     var app = new Vue({
+         el:'#app',
+         data:{
+             wendu:10,
+             jianyi:"大衣"
+         },
+         methods:{
+             add:function(num){
+                 this.wendu+=num
+             },
+             reduce:function(num){
+                 this.wendu-=num
+             }
+         },
+        //  watch:{
+        //      wendu:function(newVal,oldVal){
+        //          if(newVal>=26){
+        //              this.jianyi=jianyiList[0];
+        //          }
+        //          else if(newVal<26 && newVal>=0){
+        //              this.jianyi=jianyiList[1];
+        //          }
+        //          else{
+        //              this.jianyi=jianyiList[2];
+        //          }
+
+        //      }
+        //  }
+     });
+     app.$watch("wendu",function( newVal,oldVal){
+        if(newVal>=26){
+            this.jianyi=jianyiList[0];
+        }
+        else if(newVal<26 && newVal>=0){
+            this.jianyi=jianyiList[1];
+        }
+        else{
+            this.jianyi=jianyiList[2];
+        }
+     })
+    </script>
+</body>
+</html>
