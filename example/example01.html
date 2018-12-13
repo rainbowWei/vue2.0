@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example methods Demo</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>example methods Demo</h1>
+    <hr>
+    <div id="app">
+        {{msg}}
+    </div>
+
+    <script>
+     var app = new Vue({
+         el:'#app',
+         data:{
+             msg:'hello world !!!ksdj'
+         },
+         mounted:function(){
+             $("#app").html("我是jquery")
+         },
+         methods:{
+             add:function(){
+                 console.log("调用了构造器里的方法")
+             }
+         }
+     });
+    app.add()
+    </script>
+</body>
+</html>

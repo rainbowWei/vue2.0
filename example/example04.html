@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内部组件</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>内部组件</h1>
+    <hr>
+    <div id="app">
+       <rainbow>
+           <span slot = "Url">{{rainbowData.url}}</span>
+           <span slot = "Name">{{rainbowData.name}}</span>
+           <span slot = "Skill">{{rainbowData.skill}}</span>
+       </rainbow>
+    </div>
+    <template id="tem">
+        <div>
+            <p>地址:<slot name="Url"></slot></p>
+            <p>名称:<slot name="Name"></slot></p>
+            <p>技能:<slot name="Skill"></slot></p>
+        </div>
+    </template>
+
+    <script>
+        var rainbow = {
+            template:"#tem"
+        }
+     var app = new Vue({
+         el:'#app',
+         data:{
+             rainbowData :{
+                 url:"http://www.baidu.com",
+                 name:"百度一下",
+                 skill:"啦啦啦"
+             }
+         },
+         components:{
+             "rainbow":rainbow
+         }
+     });
+    </script>
+</body>
+</html>
